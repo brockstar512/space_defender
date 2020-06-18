@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
 
+    Coroutine firingCoroutine;
+
     float xMin;
     float xMax;
     float yMin;
@@ -31,14 +33,20 @@ public class Player : MonoBehaviour
 
 
     private void Fire(){
-        StartCoroutine(FireContinuously());
+        //this is found in axis is project settings
+        if(Input.GetButtonDown("Fire1")){
+            //when we start firing we start a coroutine
+            firingCoroutine= StartCoroutine(FireContinuously());
+        }
+        if(Input.GetButtonUp("Fire1")){
+            //when the button goes up we stop the coroutine
+            StopCoroutine(firingCoroutine);
+        }
     }
 
     IEnumerator FireContinuously(){
         //if you hold down the fire button it will be true
         while(true){
-     //this is found in axis is project settings
-        if(Input.GetButtonDown("Fire1")){
             //if fire button is clicked.
             //instantiate(add) this gameObject                      //this wont apply any rotation                                   
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -46,7 +54,7 @@ public class Player : MonoBehaviour
             //giving it a speed below
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectileFiringPeriod);
-        }
+        
         }
     }
 
