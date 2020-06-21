@@ -14,3 +14,5 @@ public class Shredder : MonoBehaviour
 
 //rigid body - allows physics to effect it
 //collider - gives it a phyical hit box presences
+
+//this shredder is just a boundary so the bullets odn't go off into oblivion
