@@ -5,10 +5,11 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
     //connect our waveConfig script
-    [SerializeField] WaveConfig waveConfig;
+    WaveConfig waveConfig;
     //a group of coordinates which is why the type fo list is transform(initializing a variable)
     List<Transform> waypoints;
-    [SerializeField] float moveSpeed = 2f;
+    // [SerializeField] float moveSpeed = 2f;
+    
     int waypointIndex = 0;
 
     // Start is called before the first frame update
@@ -16,7 +17,7 @@ public class EnemyPathing : MonoBehaviour
     {
         //this grabs the Getwaypoints function out of wave config
         waypoints = waveConfig.GetWaypoints();
-        //the tranform companent that holds this script. we want the position of the waypoints at the particular list.
+        //the tranform component that holds this script. we want the position of the waypoints at the particular list.
         transform.position = waypoints[waypointIndex].transform.position;
     }
 
@@ -25,6 +26,14 @@ public class EnemyPathing : MonoBehaviour
     {
         Move();
         
+    }
+
+    public void setWaveConfig(WaveConfig waveConfig)
+    {
+        //this class waveConfig = the recieved waveConfig
+        this.waveConfig=waveConfig;
+
+
     }
 
     private void Move()
@@ -36,7 +45,7 @@ public class EnemyPathing : MonoBehaviour
             //var of the spoition we are headed
             var targetPosition = waypoints[waypointIndex].transform.position;
             //movement speed                    //this makes it independed of frame rate
-            var movementThisFrame = moveSpeed * Time.deltaTime;
+            var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
 
             if(transform.position == targetPosition)
@@ -56,3 +65,7 @@ public class EnemyPathing : MonoBehaviour
 //wave config
 //enemy
 //enemy pathing
+
+
+//waves have the wave config which has hte path and the enemy info
+//after i make the wave i need to drag it to enemy spawner

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//this creates an asset menu if you right click the object
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
 public class WaveConfig : ScriptableObject
 //this is a script that will let you create a scriptable object config with this script
 //i think a scriptbale object is basically a place that collects a lot of scripts
 {
- 
+                //when this is returned in the function down below an actual enemy goes out
  [SerializeField] GameObject enemyPrefab;
  [SerializeField] GameObject pathPrefab;
  [SerializeField] float timeBetweenSpawns = 0.5f;
