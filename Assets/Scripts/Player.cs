@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //this will give these a heading
+    [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = .5f;
+    [SerializeField] int health = 200;
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0,1)] float deathSoundVolume = 0.25f;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] [Range(0,1)] float shootSoundVolume = 0.25f;
+
+
     //prefab is a game object
+    [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
@@ -53,6 +65,7 @@ public class Player : MonoBehaviour
             //every time fire is clicked create a game object out of laser prefab and instatiate it as a game object
             //giving it a speed below
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
             yield return new WaitForSeconds(projectileFiringPeriod);
         
         }
@@ -81,6 +94,43 @@ public class Player : MonoBehaviour
         yMin= gameCamera.ViewportToWorldPoint(new Vector3(0,0,0)).y + padding;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0,1,0)).y - padding;
     } 
+
+
+
+
+    private void OnTriggerEnter2D(Collider2D laser)
+    {
+        DamageDealer damageDealer = laser.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }//if they dont have this component just return
+        //this conditional thing is in case we dumb a prefab that is expecting a
+        //script that we forgot to check its box bc I think the defaul tis there
+        //script are not always active... its to prevent a null object reference error
+        ProcessHit(damageDealer);
+        //pass damageDealer to Process hit
+    }
+
+   private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        //theres a triiger box on the collider component i need to check off for the laser
+        damageDealer.hit();
+        //this damage dealer is calling the hit function that destroys laser when it hits somehting
+         if( health <= 0){
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+
+        Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
+            
+            
+            //find this script and grab it
+        FindObjectOfType<Level>().LoadGameOver();//load this script when this function happens
+    }
+
 
 }
 //what is a coroutine? 

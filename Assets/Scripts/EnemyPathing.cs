@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
     //connect our waveConfig script
+    //is the type Wave Config because we are referenceing a script??
     WaveConfig waveConfig;
     //a group of coordinates which is why the type fo list is transform(initializing a variable)
     List<Transform> waypoints;

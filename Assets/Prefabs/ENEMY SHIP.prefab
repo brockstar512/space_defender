@@ -11,8 +11,12 @@ GameObject:
   - component: {fileID: 1745929050788664512}
   - component: {fileID: 1745929050788664519}
   - component: {fileID: -8439088748546120433}
-  m_Layer: 0
-  m_Name: Enemy
+  - component: {fileID: 6066394088609996193}
+  - component: {fileID: -3454156822412796830}
+  - component: {fileID: 3055924766192500492}
+  - component: {fileID: -8399703295532582693}
+  m_Layer: 9
+  m_Name: ENEMY SHIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,5 +98,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a42c8a9798c478a80282e77c37fd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfig: {fileID: 11400000, guid: 54de2d17f8f2d4b13afb0ca1e84b1aa9, type: 2}
-  moveSpeed: 4
+--- !u!114 &6066394088609996193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745929050788664518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcdc363df04f4e92958b8a5fb4ea8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  shotCounter: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3
+  projectile: {fileID: 3803471204295117711, guid: fa6837dea8a7f4247bff7aaf304ffb7e,
+    type: 3}
+  projectileSpeed: 10
+  deathVFX: {fileID: 3472502375391057369, guid: 564d76360dc7645fab4199c4493edbba,
+    type: 3}
+  durationOfExplosion: 1
+  deathSFX: {fileID: 8300000, guid: e71caa187982541c1bee3eb48c13dbfa, type: 3}
+  deathSoundVolume: 0.75
+  shootSound: {fileID: 8300000, guid: e0f14eceb83124cb2bb02421c2b1ae8d, type: 3}
+  shootSoundVolume: 0.25
+--- !u!58 &-3454156822412796830
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745929050788664518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0068894625, y: 0.010334283}
+  serializedVersion: 2
+  m_Radius: 0.41321325
+--- !u!50 &3055924766192500492
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745929050788664518}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-8399703295532582693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745929050788664518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc167c701a614038b4cc664b7a15597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
