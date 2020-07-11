@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = .5f;
-    [SerializeField] int health = 200;
+    [SerializeField] int health = 1000;
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] AudioClip deathSFX;
@@ -130,9 +130,14 @@ public class Player : MonoBehaviour
             //find this script and grab it
         FindObjectOfType<Level>().LoadGameOver();//load this script when this function happens
     }
-
+    public int GetHealth()
+    {
+        return health;
+    }
 
 }
+
+
 //what is a coroutine? 
 // a method that is called when a condition is met
 //startCoroutine(nameOfCoroutine())

@@ -20,6 +20,7 @@ public void LoadDaGame()
     //loading the game referene. the name of the scene HAS TO BE THE SAME in this loader
     SceneManager.LoadScene("Game");
     // Debug.Log("Clicked!");
+    FindObjectOfType<GameSession>().ResetGame();
 }
 //4 game over scene
 public void LoadGameOver()
