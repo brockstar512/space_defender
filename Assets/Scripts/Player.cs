@@ -123,7 +123,11 @@ public class Player : MonoBehaviour
     private void Die()
     {
 
+
         Destroy(gameObject);
+        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
+
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
             
             

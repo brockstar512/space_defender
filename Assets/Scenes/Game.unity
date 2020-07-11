@@ -1374,22 +1374,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7958013903002661839, guid: 70cbba34923cd443c8351db3237db3ff,
-        type: 3}
-      propertyPath: shootSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 8d4efee751b53485a9aa7799665db1f9, type: 3}
-    - target: {fileID: 7958013903002661839, guid: 70cbba34923cd443c8351db3237db3ff,
-        type: 3}
-      propertyPath: deathSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 96470484c77f84ba1b2b54a87fe19c97, type: 3}
-    - target: {fileID: 7958013903002661839, guid: 70cbba34923cd443c8351db3237db3ff,
-        type: 3}
-      propertyPath: deathVFX
-      value: 
-      objectReference: {fileID: 3472502375391057369, guid: 564d76360dc7645fab4199c4493edbba,
-        type: 3}
     - target: {fileID: 7958013903002661842, guid: 70cbba34923cd443c8351db3237db3ff,
         type: 3}
       propertyPath: m_Name
